@@ -1,0 +1,8 @@
+1.在MATLAB中用readtable与jsondecode导入七份业务输入，检查表头、主键、时间单调性和电价区间连续性
+2.把观测air_temp_c插值到求解时刻，按输入方程计算部件温度、固化度和反应热流
+3.逐个回放model_candidates.csv中的候选，对A与B分别计算温度RMSE和热流RMSE
+4.按测量分辨率汇总联合评分，依次使用total_score和model_id确定入选模型
+5.为program_candidates.csv中的每套程序建立升温、保温和降温空气轨迹，带入生产件初态与tau_multiplier求解
+6.累计工艺边界、逐步能耗和分时费用，把全部失败代码写入program_review.csv
+7.在可行集合中选择费用最低的程序，将完整轨迹写入selected_profile.csv并保存MAT工作区
+8.用exportgraphics生成工程评审图，并将入选模型、入选程序、输入计数和核心指标写入review_summary.json

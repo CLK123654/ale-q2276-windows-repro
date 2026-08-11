@@ -1,0 +1,9 @@
+复合材料制造团队准备放行18mm碳纤维环氧层合板的下一批热压罐程序。材料工程组已经完成两次试片热循环，并给出允许进入评审的动力学模型和生产程序。需要把试片回放、工艺边界与分时电价放在同一条分析链中，形成可供材料工程组和生产计划员共同使用的交付。
+
+输入数据包中的calibration/run_A.csv和calibration/run_B.csv记录空气温度、部件温度及单位质量反应热流。model_candidates.csv是待复核模型，program_candidates.csv是生产部门可排入设备的程序。production/laminate_profile.json给出生产件初态与热惯性修正，commercial/energy_tariff.csv给出评审时段的电价，rules/process_criteria.json给出状态方程、测量分辨率、求解精度、工艺边界、能耗模型和选择顺序。数据说明.md说明材料来源与用途。
+
+使用MATLABR2024b先检查输入字段、时间顺序、候选标识和电价覆盖，再让每组模型同时回放A与B两次试片。按工艺准则中的分辨率归一化温度与热流误差，汇总联合评分并选出最低分模型。求解器实现可以自行选择，但步长与误差控制不得放宽process_criteria.json给出的上限。试片回放必须使用观测air_temp_c作为空气边界。
+
+把入选模型与laminate_profile.json中的生产初态和tau_multiplier带入全部候选程序，求出周期、终点固化度、冷却起点固化度、峰值部件温度、升温滞后、放热温差、能耗和费用。一个程序触发多项边界时保留全部failure_codes。只在feasible为真的程序中按输入给定顺序选择放行方案，并展开该方案的RAMP、HOLD和COOL轨迹。
+
+交付src/run_cure_review.m、results/calibration_review.csv、results/program_review.csv、results/selected_profile.csv、results/review_summary.json、results/cure_review.mat和figures/cure_review.png。MAT文件保留结构化明细与入选对象，供后续材料分析继续使用。工程评审图需同时呈现两次试片的观测与入选模型、放行程序的空气温度与部件温度及固化度，以及各候选程序的费用和可行状态。

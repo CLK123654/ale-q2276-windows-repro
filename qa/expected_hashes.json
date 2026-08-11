@@ -1,0 +1,18 @@
+{
+  "input": {
+    "name": "输入数据包.zip",
+    "sha256": "5d15ab3085da5d4006245697c45eee66c31f555a72f65d2dbde0600294a1125e"
+  },
+  "reference": {
+    "name": "reference.zip",
+    "sha256": "19490afb22d4703c1dba509ea41ff3c6bec406eb945f72854decea2bc3b47162"
+  },
+  "answers": {
+    "name": "关键标准答案.xlsx",
+    "sha256": "6f9d7811f8d2b2cd2e403e9e0483c9fe430380daee768c2badac8f4fcb6c1489"
+  },
+  "spec": {
+    "name": "任务规格转化.xlsx",
+    "sha256": "b155a1c1591f7a629ae00d0680dc68acc55128d3d118ff949146f2ebdeff4c30"
+  }
+}

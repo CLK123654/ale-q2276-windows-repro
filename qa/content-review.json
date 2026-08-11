@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "result": "PASS",
+  "business_role": "复合材料工艺工程师",
+  "consumers": [
+    "材料工程组",
+    "生产计划员",
+    "后续材料分析人员"
+  ],
+  "linked_work_parts": [
+    "核对试片、候选、生产件、电价和工艺准则",
+    "用两次试片联合评估并选择候选模型",
+    "使用入选模型模拟全部生产程序",
+    "应用工艺边界并保留全部失败代码",
+    "累计分时能耗和费用并选择可行程序",
+    "整理轨迹、MAT工作区、摘要和工程评审图"
+  ],
+  "consumed_business_inputs": [
+    "calibration/run_A.csv",
+    "calibration/run_B.csv",
+    "model_candidates.csv",
+    "program_candidates.csv",
+    "production/laminate_profile.json",
+    "commercial/energy_tariff.csv",
+    "rules/process_criteria.json"
+  ],
+  "reference_deliverables": [
+    "src/run_cure_review.m",
+    "results/calibration_review.csv",
+    "results/program_review.csv",
+    "results/selected_profile.csv",
+    "results/review_summary.json",
+    "results/cure_review.mat",
+    "figures/cure_review.png"
+  ],
+  "checks": {
+    "task_is_real_business_work": true,
+    "primary_software_is_essential": true,
+    "at_least_three_consumed_inputs": true,
+    "at_least_four_linked_work_parts": true,
+    "hard_numbers_have_sources": true,
+    "reference_contains_only_business_deliverables": true,
+    "rubric_covers_all_prompt_requirements": true,
+    "rubric_items_bind_observable_artifacts": true,
+    "continuous_values_have_engineering_tolerances": true,
+    "no_pseudo_citations": true,
+    "no_hallucinated_runtime_claims": true,
+    "no_broken_reasoning_chain": true,
+    "no_authoring_or_windows_validation_language_in_task": true,
+    "no_answer_leakage_in_input": true,
+    "no_privacy_or_company_sensitive_data": true,
+    "inputs_are_synthetic_and_publicly_usable": true
+  },
+  "ai_risk_manual_disposition": {
+    "file_reference_count_note": "Prompt逐项列出七份真实业务输入和七项有明确消费者的交付，不含纯判卷证据",
+    "online_ai_detection_used_as_conclusion": false
+  }
+}
