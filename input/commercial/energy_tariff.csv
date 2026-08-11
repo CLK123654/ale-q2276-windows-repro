@@ -1,0 +1,5 @@
+start_min,end_min,tariff_yuan_kwh,band
+0,30,0.72,shoulder
+30,120,1.35,peak
+120,240,0.95,shoulder
+240,360,0.60,off_peak
