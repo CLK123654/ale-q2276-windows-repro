@@ -61,5 +61,14 @@
     "energy_kwh": 6,
     "cost_yuan": 6,
     "cycle_min": 4
+  },
+  "handoff_tolerance": {
+    "temperature_rmse_c": 0.1,
+    "heat_flow_rmse_w_kg": 0.5,
+    "program_temperature_c": 0.2,
+    "cure_degree": 0.002,
+    "cycle_min": 0.1,
+    "energy_kwh": 0.2,
+    "cost_yuan": 0.3
   }
 }
