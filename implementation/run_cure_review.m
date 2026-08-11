@@ -53,8 +53,8 @@ tariff = readtable(fullfile(inputRoot,"commercial","energy_tariff.csv"),TextType
 laminate = jsondecode(fileread(fullfile(inputRoot,"production","laminate_profile.json")));
 criteria = jsondecode(fileread(fullfile(inputRoot,"rules","process_criteria.json")));
 
-requireColumns(runA,["time_s","air_temp_c","part_temp_c","heat_flow_w_kg"],"run_A.csv");
-requireColumns(runB,["time_s","air_temp_c","part_temp_c","heat_flow_w_kg"],"run_B.csv");
+requireColumns(runA,["run_id","time_s","air_temp_c","part_temp_c","heat_flow_w_kg"],"run_A.csv");
+requireColumns(runB,["run_id","time_s","air_temp_c","part_temp_c","heat_flow_w_kg"],"run_B.csv");
 requireColumns(models,["model_id","tau_s","A_s_1","Ea_j_mol","reaction_order_n","beta_c_per_alpha"],"model_candidates.csv");
 requireColumns(programs,["program_id","ramp_rate_c_min","hold_temp_c","hold_min","cooldown_rate_c_min"],"program_candidates.csv");
 requireColumns(tariff,["start_min","end_min","tariff_yuan_kwh","band"],"energy_tariff.csv");
@@ -62,7 +62,8 @@ requireColumns(tariff,["start_min","end_min","tariff_yuan_kwh","band"],"energy_t
 assert(height(runA)>=3 && height(runB)>=3,"Calibration runs require at least three observations");
 assert(runA.time_s(1)==0 && runB.time_s(1)==0,"Calibration runs must start at zero seconds");
 assert(all(diff(runA.time_s)>0) && all(diff(runB.time_s)>0),"Calibration times must increase strictly");
-assert(all(isfinite(runA{:,2:4}),"all") && all(isfinite(runB{:,2:4}),"all"),"Calibration observations must be finite");
+assert(all(string(runA.run_id)=="A") && all(string(runB.run_id)=="B"),"Calibration run identifiers do not match their files");
+assert(all(isfinite(runA{:,2:5}),"all") && all(isfinite(runB{:,2:5}),"all"),"Calibration observations must be finite");
 
 models.model_id = string(models.model_id);
 programs.program_id = string(programs.program_id);
