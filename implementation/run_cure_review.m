@@ -19,7 +19,7 @@ mkdir(fullfile(outputRoot,"src"));
 
 feasible = programReview(programReview.feasible,:);
 assert(~isempty(feasible),"No production program satisfies the supplied process criteria");
-feasible = sortrows(feasible,{"cost_yuan","energy_kwh","cycle_min","program_id"});
+feasible = sortrows(feasible,["cost_yuan","energy_kwh","cycle_min","program_id"]);
 selectedId = feasible.program_id(1);
 selectedProgram = programReview(programReview.program_id==selectedId,:);
 selectedProfile = profiles.(matlab.lang.makeValidName(selectedId));
@@ -111,7 +111,7 @@ for i = 1:height(models)
         'VariableNames',{'model_id','total_score'})]; %#ok<AGROW>
     fittedByModel.(matlab.lang.makeValidName(p.model_id)) = {predA,predB};
 end
-modelScores = sortrows(modelScores,{"total_score","model_id"});
+modelScores = sortrows(modelScores,["total_score","model_id"]);
 selectedId = modelScores.model_id(1);
 selectedModel = models(models.model_id==selectedId,:);
 review.selected_model = review.model_id==selectedId;
