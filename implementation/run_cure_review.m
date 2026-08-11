@@ -41,7 +41,7 @@ save(fullfile(outputRoot,"results","cure_review.mat"), ...
 
 createReviewFigure(runA,runB,fittedA,fittedB,programReview,selectedProfile, ...
     fullfile(outputRoot,"figures","cure_review.png"));
-copyfile(mfilename("fullpath"),fullfile(outputRoot,"src","run_cure_review.m"));
+copyfile(mfilename("fullpath")+".m",fullfile(outputRoot,"src","run_cure_review.m"));
 end
 
 function [runA,runB,models,programs,tariff,laminate,criteria] = loadAndValidate(inputRoot)
